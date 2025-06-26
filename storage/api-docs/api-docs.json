@@ -253,5 +253,10 @@
             "name": "stocks",
             "description": "stocks"
         }
+    ],
+    "security": [
+        {
+            "ApiKeyAuth": []
+        }
     ]
 }

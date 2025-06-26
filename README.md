@@ -34,3 +34,4 @@
 ### domain -  https://profy.am/
 ### swagger  - https://profy.am/api/documentation
 ### Вы можете запустить API и посмотреть, как заполняются соответствующие таблицы.
+### php artisan tinker  Str::uuid() 

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('tel_number');
-            $table->foreignId('building_id')->constrained()->onDelete('cascade');
+            $table->foreignId('building_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

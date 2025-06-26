@@ -16,3 +16,7 @@ Route::get('sales',SaleController::class);
 Route::get('stocks',StockController::class);
 Route::get('incomes',IncomeController::class);
 
+Route::middleware('static.key')->group(function () {
+    // Route::get('/buildings/{building}/organizations', [OrganizationController::class, 'organizationsByBuilding']);
+});
+
