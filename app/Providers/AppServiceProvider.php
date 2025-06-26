@@ -3,7 +3,9 @@
 namespace App\Providers;
 
 use App\Interfaces\BaseInterface;
+use App\Interfaces\OrganizationInterface;
 use App\Repositories\BaseRepository;
+use App\Repositories\OrganizationRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,6 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->app->bind(OrganizationInterface::class,OrganizationRepository::class);
     }
 }
