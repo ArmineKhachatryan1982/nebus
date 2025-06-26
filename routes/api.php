@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\ActivityController;
+use App\Http\Controllers\API\filterController;
 use App\Http\Controllers\API\IncomeController;
 use App\Http\Controllers\API\MapController;
 use App\Http\Controllers\API\OrderController;
@@ -29,6 +30,7 @@ Route::get( 'organizations-radius',[MapController::class,'organizationsInRadius'
 Route::get('/organizations-box', [MapController::class, 'organizationsInBox']);
 
 Route::get('/organizations/{id}', [OrganizationController::class, 'show']);
+Route::get('filter-by-activity',filterController::class);
 
 
 
