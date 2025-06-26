@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Building extends Model
 {
     use HasFactory;
+     protected $guarded=[];
+
+    public function organizations()
+    {
+        return $this->hasMany(Organization::class);
+    }
 }

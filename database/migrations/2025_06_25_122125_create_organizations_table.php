@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('organizations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('tel_number');
             $table->foreignId('building_id')->nullable()->constrained()->onDelete('cascade');
             $table->timestamps();
         });

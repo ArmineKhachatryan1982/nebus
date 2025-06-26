@@ -23,8 +23,10 @@ class DatabaseSeeder extends Seeder
             ActivitySeeder::class,
             ActivitySubSeeder::class,
             BuildingSeeder::class,
-            PhoneSeeder::class,
-            OrganizationActivitySeeder::class
+            OrganizationSeeder::class,
+            OrganizationActivitySeeder::class,
+             PhoneSeeder::class,
+
           ]);
 
     }

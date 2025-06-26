@@ -2,8 +2,7 @@
 
 namespace App\Interfaces;
 
-interface OrganizationInterface
+interface ActivityInterface
 {
     public function index($data);
-    public function show($id);
 }

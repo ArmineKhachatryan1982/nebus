@@ -19,6 +19,7 @@ class OrganizationActivitySeeder extends Seeder
                 ->shuffle()
                 ->take(rand(1, 3))
                 ->toArray();
+                
 
             foreach ($assignedActivities as $activityId) {
                 DB::table('organization_activities')->insert([

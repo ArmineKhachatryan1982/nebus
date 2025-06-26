@@ -19,8 +19,8 @@ class OrganizationFactory extends Factory
     {
         return [
         'name' => $this->faker->company,
-        'tel_number' => $this->faker->phoneNumber,
-       
+        'building_id' => Building::inRandomOrder()->value('id'),
+
        ];
     }
 }

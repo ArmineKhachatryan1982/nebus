@@ -1,6 +1,7 @@
 <?php
 namespace App\Services;
 
+use App\Http\Resources\OrganizationResource;
 use App\Interfaces\OrganizationInterface;
 use App\Traits\FilterTrait;
 class OrganizationService
@@ -8,37 +9,19 @@ class OrganizationService
     use FilterTrait;
     public function __construct(protected OrganizationInterface $repository){}
 
-    public function getAllData($data){
+    public function getBuildingOrganization($data){
+
+        $data = $this->repository->index($data);
+
+        return $data;
 
 
-        $dataFromFilter = $this->filter($data,"sales");
+    }
+    public function showData($id){
 
-        if(isset($dataFromFilter['data']) && count($dataFromFilter['data'])>0){
+        $data = $this->repository->show($id);
 
-            $saveInDB = $this->repository->store(attributes: $dataFromFilter['data']);
-
-            if(count( $saveInDB)>0){
-                return [
-                    'status' => true,
-
-                ];
-            }
-
-        }else{
-            if (array_key_exists('dateFrom', $dataFromFilter)) {
-                // Ключ "dateFrom" существует
-                // dd($dataFromFilter['dateFrom'][0]);
-                // return $dataFromFilter;
-                return [
-                    'status' => false,
-                    'errors' => $dataFromFilter
-                ];
-            }
-            return [
-                'status' => false,
-
-            ];
-        }
+        return $data;
 
     }
 
