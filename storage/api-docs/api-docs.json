@@ -6,7 +6,7 @@
     },
     "servers": [
         {
-            "url": "http://127.0.0.1:8000",
+            "url": "http://127.0.0.1:8000/",
             "description": "Local API Server"
         }
     ],
@@ -123,6 +123,64 @@
                 }
             }
         },
+        "/api/organizations/{id}": {
+            "get": {
+                "tags": [
+                    "Organizations"
+                ],
+                "summary": "Получить организацию по ID",
+                "description": "Возвращает организацию по указанному ID",
+                "operationId": "getOrganizationById",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID организации",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 5
+                        }
+                    },
+                    {
+                        "name": "X-API-KEY",
+                        "in": "header",
+                        "description": "API ключ для доступа",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "cfd91a1a-251d-4029-9cfd-d84ce6005c64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Успешный ответ",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 5
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized — отсутствует или неверный API ключ"
+                    }
+                },
+                "security": [
+                    {
+                        "api_key": []
+                    }
+                ]
+            }
+        },
         "/api/sales": {
             "get": {
                 "tags": [
@@ -236,6 +294,16 @@
             }
         }
     },
+    "components": {
+        "securitySchemes": {
+            "api_key": {
+                "type": "apiKey",
+                "description": "API ключ для доступа",
+                "name": "X-API-KEY",
+                "in": "header"
+            }
+        }
+    },
     "tags": [
         {
             "name": "incomes",
@@ -244,6 +312,10 @@
         {
             "name": "orders",
             "description": "orders"
+        },
+        {
+            "name": "Organizations",
+            "description": "Organizations"
         },
         {
             "name": "sales",

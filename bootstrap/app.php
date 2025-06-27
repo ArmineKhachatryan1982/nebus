@@ -15,8 +15,14 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->append(CorsMiddleware::class);
-        $middleware->append(StaticApiKeyMiddleware::class);
+        // $middleware->append(StaticApiKeyMiddleware::class);
+         $middleware->alias([
+            'api.key' => StaticApiKeyMiddleware::class, // ✅ Вот тут правильно
+        ]);
+
+
+
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
+
     })->create();

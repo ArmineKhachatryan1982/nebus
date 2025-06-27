@@ -15,13 +15,14 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
-Route::get('orders',OrderController::class);
-Route::get('sales',SaleController::class);
-Route::get('stocks',StockController::class);
-Route::get('incomes',IncomeController::class);
+// Route::get('orders',OrderController::class);
+// Route::get('sales',SaleController::class);
+// Route::get('stocks',StockController::class);
+// Route::get('incomes',IncomeController::class);
 
 
 // ====
+// Route::middleware(['static_api_key'])->group(function () {
 Route::get('/buildings/{building}/organizations', [OrganizationController::class, 'organizationsByBuilding']);
 Route::get('/activities/{activity}/organizations',[ActivityController::class,'organizationsByActivity']);
 // Для радиуса
@@ -29,8 +30,8 @@ Route::get( 'organizations-radius',[MapController::class,'organizationsInRadius'
 // Для прямоугольной области
 Route::get('/organizations-box', [MapController::class, 'organizationsInBox']);
 
-Route::get('/organizations/{id}', [OrganizationController::class, 'show']);
+Route::get('/organizations/{id}', [OrganizationController::class, 'show'])->middleware('api.key');
 Route::get('filter-by-activity',filterController::class);
 
-
+// });
 

@@ -15,11 +15,18 @@ class StaticApiKeyMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $providedKey = $request->header('X-API-KEY');
-        $validKey = config('app.static_api_key'); // получаем из config
 
-        if (!$providedKey || $providedKey !== $validKey) {
-            return response()->json(['error' => 'Unauthorized. Invalid API key.'], 401);
+        // Swagger UI исключаем
+        if (str_contains($request->path(), 'api/documentation')) {
+            return $next($request);
+        }
+
+        $apiKey = $request->header('X-API-KEY');
+
+        if ($apiKey !== config('app.static_api_key')) {
+       
+
+            return response()->json(['message' => 'Unauthorized'], 401);
         }
 
         return $next($request);

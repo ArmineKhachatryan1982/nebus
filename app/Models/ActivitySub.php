@@ -9,7 +9,7 @@ class ActivitySub extends Model
 {
     use HasFactory;
      protected $guarded=[];
-     public function activities{
+     public function activities(){
         return $this->belongsTo(Activity::class,'activity_id');
      }
 }

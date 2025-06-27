@@ -11,5 +11,12 @@ namespace App\Swagger;
  *     url=L5_SWAGGER_CONST_HOST,
  *     description="Local API Server"
  * )
+ * @OA\SecurityScheme(
+ *     securityScheme="api_key",
+ *     type="apiKey",
+ *     in="header",
+ *     name="X-API-KEY",
+ *     description="API ключ для доступа"
+ * )
  */
 class ApiInfo {}
